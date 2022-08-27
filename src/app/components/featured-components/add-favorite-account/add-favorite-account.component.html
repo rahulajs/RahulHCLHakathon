@@ -1,0 +1,81 @@
+<div class="container border d-flex align-items-center justify-content-center">
+  <div class="contained">
+    <h1 class="title">{{ title }}</h1>
+    <!-- Account Form-->
+    <form [formGroup]="addAccountForm">
+      <div class="form-row account">
+        <label for="exampleInputEmail1">Account name</label>
+        <input
+          formControlName="accountName"
+          type="text"
+          class="form-control"
+          aria-describedby="emailHelp"
+          placeholder="Enter Account name"
+          [ngClass]="{ 'is-invalid': submitted && f.accountName.errors }"
+        />
+        <div *ngIf="submitted && f.accountName.errors" class="invalid-feedback">
+          <div *ngIf="f.accountName.errors.required">
+            Account name is required
+          </div>
+        </div>
+      </div>
+      <div class="form-row account">
+        <label>IBAN/Account number</label>
+        <input
+          formControlName="accountNumber"
+          type="text"
+          class="form-control"
+          placeholder="IBAN/Account number"
+          (change)="$event.target.blur(); getAccountDetails(); (false)"
+          [ngClass]="{ 'is-invalid': submitted && f.accountNumber.errors }"
+        />
+        <div
+          *ngIf="submitted && f.accountNumber.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f.accountNumber.errors.required">
+            Account number is required
+          </div>
+          <div *ngIf="f.accountNumber.errors.minlength">
+            Account number must be at least 20 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>Bank</label>
+        <input
+          formControlName="bankName"
+          type="text"
+          class="form-control"
+          placeholder="Bank"
+          [ngClass]="{ 'is-invalid': submitted && f.bankName.errors }"
+          disabled
+        />
+        <div *ngIf="submitted && f.bankName.errors" class="invalid-feedback">
+          <div *ngIf="f.bankName.errors.required">
+            {{ bankNameValidationMessage }}
+          </div>
+        </div>
+      </div>
+      <div class="button-container d-grid gap-2 col-6 mx-auto">
+        <div>
+          <button
+            (click)="submitAccountDetails()"
+            class="btn btn-primary button-source"
+          >
+            Save
+          </button>
+        </div>
+        <div>
+          <button
+            (click)="clearData()"
+            type="reset"
+            class="btn btn-light button-source"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

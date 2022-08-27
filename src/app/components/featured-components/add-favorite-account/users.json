@@ -1,0 +1,22 @@
+[{
+    "id": 1,
+    "accountNumber": "1234",
+    "bankName": "Nairobi Bank"
+    
+  },
+  {
+    "id": 2,
+    "accountNumber": "1235",
+    "bankName": "Denver Bank"
+
+  },{
+    "id": 3,
+    "accountNumber": "1236",
+    "bankName": "Moscow Bank"
+    
+  },{
+    "id": 4,
+    "accountNumber": "1237",
+    "bankName": "Tokio Bank"
+    
+  }]
